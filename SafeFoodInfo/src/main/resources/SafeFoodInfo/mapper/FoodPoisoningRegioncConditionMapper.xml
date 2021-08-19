@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SafeFoodInfo.mapper.FoodPoisoningRegioncConditionMapper">
+    <insert id="insertFoodPoisoningRegioncCondition">
+        INSERT INTO food_poisoning_region_condition
+        (fp_year, fp_mm, fp_area, fp_cnt, fp_patnt)
+        VALUES
+        (#{fp_year}, #{fp_mm}, #{fp_area}, #{fp_cnt}, #{fp_patnt});
+    </insert>
+</mapper>

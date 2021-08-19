@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SafeFoodInfo.mapper.FoodNutritionInfoMapper">
+    <insert id="insertFoodNutritionInfo">
+        INSERT INTO food_nutrition_info
+        (fni_name, fni_serving_wt, fni_kcal, fni_carbohydrate, fni_protein, fni_fat, fni_saccharide, fni_sodium, fni_cholesterol, fni_saturated_fat, fni_trans_fat, fni_bgn_year)
+        select * from(
+            select
+            #{fni_name} as no,
+            #{fni_serving_wt} as d1,
+            #{fni_kcal} as d2,
+            #{fni_carbohydrate} as d3,
+            #{fni_protein} as d4,
+            #{fni_fat} as d5,
+            #{fni_saccharide} as d6,
+            #{fni_sodium} as d7, 
+            #{fni_cholesterol} as d8,
+            #{fni_saturated_fat} as d9,
+            #{fni_trans_fat} as d10,
+            #{fni_bgn_year} as d11
+        ) as data
+        where not exists(
+            select fni_name from food_nutrition_info where fni_name = #{fni_name} and fni_kcal = #{fni_kcal}
+            and fni_carbohydrate = #{fni_carbohydrate} and fni_bgn_year = #{fni_bgn_year})
+    </insert>
+</mapper>

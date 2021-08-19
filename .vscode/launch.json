@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SafeFoodInfoApplication<SafeFoodInfo>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "SafeFoodInfo.SafeFoodInfoApplication",
+            "projectName": "SafeFoodInfo",
+            "args": ""
+        }
+    ]
+}

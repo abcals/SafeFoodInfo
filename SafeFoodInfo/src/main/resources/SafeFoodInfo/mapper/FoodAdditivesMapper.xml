@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SafeFoodInfo.mapper.FoodAdditivesMapper">
+    <insert id="insertFoodAdditives">
+        INSERT INTO safe_food_info.food_additives
+        (fa_prdlst_code, fa_pc_kor_name, fa_testitm_code, fa_t_kor_name, fa_fnprt_itm_name, fa_spec_val,
+        fa_spec_val_sumup, fa_vald_begn_dt, fa_vald_end_dt, fa_max_val, fa_min_val, fa_injry_yn, fa_unit_name)
+        VALUES
+        (#{fa_prdlst_code}, #{fa_pc_kor_name}, #{fa_testitm_code}, #{fa_t_kor_name}, #{fa_fnprt_itm_name}, #{fa_spec_val},
+        #{fa_spec_val_sumup}, #{fa_vald_begn_dt}, #{fa_vald_end_dt}, #{fa_max_val}, #{fa_min_val}, #{fa_injry_yn}, #{fa_unit_name});
+    </insert>
+</mapper>
