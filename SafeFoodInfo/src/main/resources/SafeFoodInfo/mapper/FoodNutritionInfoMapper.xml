@@ -4,7 +4,8 @@
 <mapper namespace="SafeFoodInfo.mapper.FoodNutritionInfoMapper">
     <insert id="insertFoodNutritionInfo">
         INSERT INTO food_nutrition_info
-        (fni_name, fni_serving_wt, fni_kcal, fni_carbohydrate, fni_protein, fni_fat, fni_saccharide, fni_sodium, fni_cholesterol, fni_saturated_fat, fni_trans_fat, fni_bgn_year)
+        (fni_name, fni_serving_wt, fni_kcal, fni_carbohydrate, fni_protein, fni_fat,
+        fni_saccharide, fni_sodium, fni_cholesterol, fni_saturated_fat, fni_trans_fat, fni_bgn_year)
         select * from(
             select
             #{fni_name} as no,

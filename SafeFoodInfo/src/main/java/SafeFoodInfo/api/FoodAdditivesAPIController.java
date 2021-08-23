@@ -1,14 +1,13 @@
 package SafeFoodInfo.api;
 
 import java.net.URLEncoder;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.w3c.dom.Document;
@@ -16,17 +15,21 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import SafeFoodInfo.service.FoodAdditivesService;
 import SafeFoodInfo.vo.FoodAdditivesInfoVO;
 
 @RestController
 public class FoodAdditivesAPIController {
+    @Autowired
+    FoodAdditivesService service;
+
     @GetMapping("/api/food_additives")
     public Map<String, Object> getFoodAdditivesInfo() throws Exception{
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1470000/FoodAdtvInfoService/getFoodAdtvInfoList"); /*URL*/
-        urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=q8DD9W8q4XBY24HHLTo8g7PZalXiw6wnIuWN95KUPIP1Dwy%2FGaKokqcyLTGhjoih9lHQYyP%2FIESNDCddp%2BbP%2Bw%3%3D"); /*Service Key*/
-        urlBuilder.append("&" + URLEncoder.encode("prdlst_cd","UTF-8") + "=" + URLEncoder.encode("C0118010300000", "UTF-8")); /*품목코드*/
-        urlBuilder.append("&" + URLEncoder.encode("pc_kor_nm","UTF-8") + "=" + URLEncoder.encode("과.채음료", "UTF-8")); /*품목한글명*/
+        urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=q8DD9W8q4XBY24HHLTo8g7PZalXiw6wnIuWN95KUPIP1Dwy%2FGaKokqcyLTGhjoih9lHQYyP%2FIESNDCddp%2BbP%2Bw%3D%3D"); /*Service Key*/
+        // urlBuilder.append("&" + URLEncoder.encode("prdlst_cd","UTF-8") + "=" + URLEncoder.encode("C0118010300000", "UTF-8")); /*품목코드*/
+        // urlBuilder.append("&" + URLEncoder.encode("pc_kor_nm","UTF-8") + "=" + URLEncoder.encode("과.채음료", "UTF-8")); /*품목한글명*/
         urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
         urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); /*한 페이지 결과 수*/
         
@@ -35,7 +38,10 @@ public class FoodAdditivesAPIController {
         Document doc = docBuilder.parse(urlBuilder.toString());
 
         doc.getDocumentElement().normalize();
+        System.out.println(doc.getDocumentElement().getNodeName());
+        
         NodeList nList = doc.getElementsByTagName("item");
+        System.out.println("파싱할 리스트 수 : "+ nList.getLength());
         if(nList.getLength() <= 0){
             resultMap.put("status", false);
             resultMap.put("message","데이터가 없습니다.");
@@ -56,14 +62,12 @@ public class FoodAdditivesAPIController {
             String fa_min_val = getTagValue("MIMM_VAL", elem);
             String fa_injry_yn = getTagValue("INJRY_YN", elem);
             String fa_unit_name = getTagValue("UNIT_NM", elem);
-        
+            String bDt = getTagValue("VALD_BEGN_DT",elem);
+            String eDt = getTagValue("VALD_END_DT",elem);
+            
+            
             FoodAdditivesInfoVO vo = new FoodAdditivesInfoVO();
 
-            Date bDt = new Date();
-            Date eDt = new Date();
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            bDt = formatter.parse(getTagValue("VALD_BEGN_DT",elem));
-            eDt = formatter.parse(getTagValue("VALD_END_DT",elem));
             
             vo.setFa_prdlst_code(fa_prdlst_code);
             vo.setFa_pc_kor_name(fa_pc_kor_name);
@@ -80,7 +84,7 @@ public class FoodAdditivesAPIController {
             vo.setFa_unit_name(fa_unit_name);
 
             System.out.println(vo);
-            
+            service.insertFoodAdditives(vo);          
         }
 
         resultMap.put("status", true);

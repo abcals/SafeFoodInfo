@@ -28,11 +28,11 @@ public class FoodPoisoningRegioncConditionAPIController {
         public Map<String, Object> getFoodPoisoningInfo() throws Exception{
             Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
             StringBuilder urlBuilder = new StringBuilder("http://openapi.foodsafetykorea.go.kr/api"); 
-            urlBuilder.append("/" + URLEncoder.encode("keyId","UTF-8") + "6e683879bddd4137880c"); /*Service Key*/
-            urlBuilder.append("/" + URLEncoder.encode("serviceId","UTF-8") + URLEncoder.encode("I2848", "UTF-8"));
-            urlBuilder.append("/" + URLEncoder.encode("dataType","UTF-8") + URLEncoder.encode("xml", "UTF-8"));
-            urlBuilder.append("/" + URLEncoder.encode("startIdx","UTF-8") + URLEncoder.encode("1", "UTF-8"));
-            urlBuilder.append("/" + URLEncoder.encode("endIdx","UTF-8") + URLEncoder.encode("5", "UTF-8"));
+            urlBuilder.append("/" + URLEncoder.encode("6e683879bddd4137880c","UTF-8")); /*Service Key*/
+            urlBuilder.append("/" + URLEncoder.encode("I2848","UTF-8"));
+            urlBuilder.append("/" + URLEncoder.encode("xml","UTF-8"));
+            urlBuilder.append("/" + URLEncoder.encode("1","UTF-8"));
+            urlBuilder.append("/" + URLEncoder.encode("5","UTF-8"));
         
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();

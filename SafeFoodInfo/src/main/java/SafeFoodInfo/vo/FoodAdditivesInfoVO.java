@@ -1,6 +1,5 @@
 package SafeFoodInfo.vo;
 
-import java.util.Date;
 
 import lombok.Data;
 
@@ -14,8 +13,8 @@ public class FoodAdditivesInfoVO {
     private String fa_fnprt_itm_name;
     private String fa_spec_val;
     private String fa_spec_val_sumup;
-    private Date fa_vald_begn_dt;
-    private Date fa_vald_end_dt;
+    private String fa_vald_begn_dt;
+    private String fa_vald_end_dt;
     private String fa_max_val;
     private String fa_min_val;
     private String fa_injry_yn;

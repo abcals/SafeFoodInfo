@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SafeFoodInfo.mapper.HealthFood_IngredientMapper">
+    <insert id="insertHealthFoodIndividuelIngredient">
+        INSERT INTO healthfood_individuel_ingredient
+        (hfi_pawmtrl_nm, hfi_hf_fnclty_mtral_rcpgn_no, hfi_iftkn_atnt_matr_cn, hfi_wt_unit, hfi_day_intk_highlimit, hfi_day_intk_lowlimit, hfi_primary_fnclty)
+         select * from(
+            select
+            #{hfi_pawmtrl_nm} as no,
+            #{hfi_hf_fnclty_mtral_rcpgn_no} as d1,
+            #{hfi_iftkn_atnt_matr_cn} as d2,
+            #{hfi_wt_unit} as d3,
+            #{hfi_day_intk_highlimit} as d4,
+            #{hfi_day_intk_lowlimit} as d5,
+            #{hfi_primary_fnclty} as d6
+        ) as data
+        where not exists(
+            select hfi_pawmtrl_nm from healthfood_individuel_ingredient where hfi_pawmtrl_nm = #{hfi_pawmtrl_nm}
+            and hfi_hf_fnclty_mtral_rcpgn_no = #{hfi_hf_fnclty_mtral_rcpgn_no})
+    </insert>
+</mapper>

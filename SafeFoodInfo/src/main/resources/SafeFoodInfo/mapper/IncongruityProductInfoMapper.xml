@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SafeFoodInfo.mapper.IncongruityProductInfoMapper">
+    <insert id="insertIncongruityProductInfo">
+        INSERT INTO incongruity_product
+        (ip_frmlcunit, ip_testanals_rslt, ip_bsshnm, ip_distbtmlmt, ip_brcdno, ip_rtrvldsuse_seq, ip_cret_dtm, ip_prdlst_report_no,
+        ip_mnfdt, ip_prdtnm, ip_lcns_no, ip_stdr_stnd, ip_addr, ip_test_itmnm, ip_instt_nm)
+        select * from(
+            select
+            #{ip_frmlcunit} as no,
+            #{ip_testanals_rslt} as d1,
+            #{ip_bsshnm} as d2,
+            #{ip_distbtmlmt} as d3,
+            #{ip_brcdno} as d4,
+            #{ip_rtrvldsuse_seq} as d5,
+            #{ip_cret_dtm} as d6,
+            #{ip_prdlst_report_no} as d7, 
+            #{ip_mnfdt} as d8,
+            #{ip_prdtnm} as d9,
+            #{ip_lcns_no} as d10,
+            #{ip_stdr_stnd} as d11,
+            #{ip_addr} as d12,
+            #{ip_test_itmnm} as d13,
+            #{ip_instt_nm} as d14
+        ) as data
+        where not exists(
+            select * from incongruity_product where ip_bsshnm = #{ip_bsshnm}
+            and ip_prdtnm = #{ip_prdtnm}
+            and ip_rtrvldsuse_seq = #{ip_rtrvldsuse_seq}) 
+    </insert>
+    <select id = "selectIncongruityProductInfo_topList" resultType = "SafeFoodInfo.vo.IncongruityProductInfoVO">
+        select ip_bsshnm, ip_prdtnm, ip_test_itmnm, ip_stdr_stnd, ip_testanals_rslt, ip_cret_dtm
+        from incongruity_product order by ip_seq limit 5;
+    </select>
+</mapper>

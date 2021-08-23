@@ -3,11 +3,27 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="SafeFoodInfo.mapper.FoodAdditivesMapper">
     <insert id="insertFoodAdditives">
-        INSERT INTO safe_food_info.food_additives
+        INSERT INTO food_additives
         (fa_prdlst_code, fa_pc_kor_name, fa_testitm_code, fa_t_kor_name, fa_fnprt_itm_name, fa_spec_val,
         fa_spec_val_sumup, fa_vald_begn_dt, fa_vald_end_dt, fa_max_val, fa_min_val, fa_injry_yn, fa_unit_name)
-        VALUES
-        (#{fa_prdlst_code}, #{fa_pc_kor_name}, #{fa_testitm_code}, #{fa_t_kor_name}, #{fa_fnprt_itm_name}, #{fa_spec_val},
-        #{fa_spec_val_sumup}, #{fa_vald_begn_dt}, #{fa_vald_end_dt}, #{fa_max_val}, #{fa_min_val}, #{fa_injry_yn}, #{fa_unit_name});
+        select * from(
+            select
+            #{fa_prdlst_code} as no,
+            #{fa_pc_kor_name} as d1,
+            #{fa_testitm_code} as d2,
+            #{fa_t_kor_name} as d3,
+            #{fa_fnprt_itm_name} as d4,
+            #{fa_spec_val} as d5,
+            #{fa_spec_val_sumup} as d6,
+            #{fa_vald_begn_dt} as d7, 
+            #{fa_vald_end_dt} as d8,
+            #{fa_max_val} as d9,
+            #{fa_min_val} as d10,
+            #{fa_injry_yn} as d11,
+            #{fa_unit_name} as d12
+        ) as data
+        where not exists(
+            select * from food_additives where fa_prdlst_code = #{fa_prdlst_code} and fa_pc_kor_name = #{fa_pc_kor_name}
+            and fa_testitm_code = #{fa_testitm_code})    
     </insert>
 </mapper>
