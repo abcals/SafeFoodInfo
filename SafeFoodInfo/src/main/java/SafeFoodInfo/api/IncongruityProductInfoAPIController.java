@@ -66,9 +66,8 @@ public class IncongruityProductInfoAPIController {
             vo.setIp_test_itmnm(getTagValue("TEST_ITMNM",elem));
             vo.setIp_instt_nm(getTagValue("INSTT_NM",elem));
             
-            System.out.println(vo);
             service.insertIncongruityProductInfo(vo);
-
+ 
         }
         resultMap.put("status", true);
         resultMap.put("message","데이터가 입력되었습니다.");

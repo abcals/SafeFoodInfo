@@ -58,7 +58,6 @@ public class HealthFood_IngredientAPIController {
             vo.setHfi_primary_fnclty(getTagValue("PRIMARY_FNCLTY",elem));
             
 
-            System.out.println(vo);
             service.insertHealthFoodIndividuelIngredient(vo);
             
         }

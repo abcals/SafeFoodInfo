@@ -64,7 +64,6 @@ public class FoodNutritionAPIController {
             vo.setFni_name(getTagValue("DESC_KOR",elem));
             vo.setFni_bgn_year(getTagValue("BGN_YEAR",elem));
 
-            System.out.println(vo);
             service.insertFoodNutritionInfo(vo);
             
         }

@@ -8,26 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/assets/css/reset.css">
-    <link rel="stylesheet" href="/assets/css/index.css">    
+    <link rel="stylesheet" href="/assets/css/child.css">    
 </head>
 <body>
     <div class="top_menu">
         <a href="/" id="logo">그림</a>
         <ul class="main_menu">
             <li>
-                <a href="/foodinfo">식품정보</a>
+                <a href="#">급식센터 지원현황</a>
             </li>
             <li>
-                <a href="/healthfoodinfo">건강기능식품</a>
+                <a href="#">어린이 우수판매업소</a>
             </li>
             <li>
-                <a href="/foodadditives">식품첨가물</a>
+                <a href="#">어린이 식품안전보호구역</a>
             </li>
             <li>
-                <a href="/foodcode">식품공전</a>
-            </li>
-            <li>
-                <a href="/foodpoison">식중독정보</a>
+                <a href="#">기호식품 품질인증 현황</a>
             </li>
         </ul>
     </div>

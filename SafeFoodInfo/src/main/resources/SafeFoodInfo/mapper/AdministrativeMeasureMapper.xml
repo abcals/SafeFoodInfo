@@ -27,7 +27,7 @@
             and am_dsps_enddt = #{am_dsps_enddt}) 
     </insert>
     <select id = "selectAdministrativeMeasure_topList" resultType = "SafeFoodInfo.vo.AdministrativeMeasureVO">
-        select am_prcscitypoint_bsshnm, am_dsps_bgndt, am_dspscn, am_induty_cd_nm
+        select am_prcscitypoint_bsshnm, am_dsps_dcsndt, am_dspscn, am_induty_cd_nm
         from administrative_measure
         order by am_seq limit 5;
     </select>

@@ -83,7 +83,6 @@ public class FoodAdditivesAPIController {
             vo.setFa_injry_yn(fa_injry_yn);
             vo.setFa_unit_name(fa_unit_name);
 
-            System.out.println(vo);
             service.insertFoodAdditives(vo);          
         }
 

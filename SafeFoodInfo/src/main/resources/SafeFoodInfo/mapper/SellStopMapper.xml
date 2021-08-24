@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SafeFoodInfo.mapper.SellStopMapper">
+    <insert id="insertSellStop">
+        INSERT INTO sell_stop
+        (ss_prdtnm, ss_rtrvlprvns, ss_bsshnm, ss_addr, ss_prcscitypoint_telno, ss_brcdno, ss_frmlcunit,
+        ss_mnfdt, ss_rtrvlplandoc_rtrvlmthd, ss_distbtmlmt, ss_prdlst_type, ss_img_file_path, ss_prdlst_cd,
+        ss_cret_dtm, ss_rtrvldsuse_seq, ss_prdlst_report_no, ss_rtrvl_grdcd_nm, ss_prdlst_cd_nm, ss_lcns_no)
+        select * from(
+            select
+            #{ss_prdtnm} as no,
+            #{ss_rtrvlprvns} as d1,
+            #{ss_bsshnm} as d2,
+            #{ss_addr} as d3,
+            #{ss_prcscitypoint_telno} as d4,
+            #{ss_brcdno} as d5,
+            #{ss_frmlcunit} as d6,
+            #{ss_mnfdt} as d7, 
+            #{ss_rtrvlplandoc_rtrvlmthd} as d8,
+            #{ss_distbtmlmt} as d9,
+            #{ss_prdlst_type} as d10,
+            #{ss_img_file_path} as d11,
+            #{ss_prdlst_cd} as d12,
+            #{ss_cret_dtm} as d13,
+            #{ss_rtrvldsuse_seq} as d14,
+            #{ss_prdlst_report_no} as d15,
+            #{ss_rtrvl_grdcd_nm} as d16,
+            #{ss_prdlst_cd_nm} as d17,
+            #{ss_lcns_no} as d18
+        ) as data
+        where not exists(
+            select * from sell_stop
+            where
+                ss_bsshnm = #{ss_bsshnm} and
+                ss_prdtnm = #{ss_prdtnm} and
+                ss_cret_dtm = #{ss_cret_dtm})
+    </insert>
+    <select id = "selectSellStop_topList" resultType = "SafeFoodInfo.vo.SellStopVO">
+        select ss_prdtnm, ss_bsshnm, ss_prdlst_type, ss_rtrvlprvns, ss_cret_dtm
+        from sell_stop order by ss_seq limit 5;
+    </select>
+</mapper>
