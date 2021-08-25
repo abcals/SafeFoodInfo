@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>식품안전정보</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
     <script src="/assets/js/index.js"></script> 
 </head>
 <body>
@@ -19,10 +20,29 @@
             <div class="container_left">
                 <div class="chart_area">
                     <div class="accident_cnt chart_left">
-                        <p>차트영역 왼쪽</p>
+                        <canvas id="regional_good_store" style="width:100%;"></canvas>
+                        <span>어린이 우수 판매업소 현황&nbsp <select id="region_select">
+                            <option value="서울">서울특별시</option>
+                            <option value="경기">경기도</option>
+                            <option value="인천">인천광역시</option>
+                            <option value="부산">부산광역시</option>
+                            <option value="대구">대구광역시</option>
+                            <option value="울산">울산광역시</option>
+                            <option value="광주">광주광역시</option>
+                            <option value="대전">대전광역시</option>
+                            <option value="경남">경상남도</option>
+                            <option value="경북">경상북도</option>
+                            <option value="전남">전라남도</option>
+                            <option value="전북">전라북도</option>
+                            <option value="충남">충청남도</option>
+                            <option value="충북">충청북도</option>
+                            <option value="강원">강원도</option>
+                            <option value="제주">제주특별자치도</option>
+                        </select></span>                     
                     </div>
                     <div class="patient_cnt chart_right">
-                        <p>차트영역 오른쪽</p>
+                        <canvas id="enterprise_favorite_food" style="width:100%;"></canvas>
+                        <span>기업별 기호식품 품질인증 현황</span>
                     </div>
                 </div>
                 <div class="list_area">
@@ -97,9 +117,6 @@
                 </div>
                 <div class="poison_index">
                     <p>식중독 지수</p>
-                </div>
-                <div class="child_area">
-                    <a href="/child_info">어린이 정보</a>
                 </div>
             </div>
         </div>

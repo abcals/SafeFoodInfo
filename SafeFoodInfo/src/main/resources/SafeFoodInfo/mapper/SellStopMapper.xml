@@ -5,7 +5,7 @@
     <insert id="insertSellStop">
         INSERT INTO sell_stop
         (ss_prdtnm, ss_rtrvlprvns, ss_bsshnm, ss_addr, ss_prcscitypoint_telno, ss_brcdno, ss_frmlcunit,
-        ss_mnfdt, ss_rtrvlplandoc_rtrvlmthd, ss_distbtmlmt, ss_prdlst_type, ss_img_file_path, ss_prdlst_cd,
+        ss_mnfdt, ss_rtrvlplandoc_rtrvlmthd, ss_distbtmlmt, ss_prdlst_type, ss_prdlst_cd,
         ss_cret_dtm, ss_rtrvldsuse_seq, ss_prdlst_report_no, ss_rtrvl_grdcd_nm, ss_prdlst_cd_nm, ss_lcns_no)
         select * from(
             select
@@ -20,14 +20,13 @@
             #{ss_rtrvlplandoc_rtrvlmthd} as d8,
             #{ss_distbtmlmt} as d9,
             #{ss_prdlst_type} as d10,
-            #{ss_img_file_path} as d11,
-            #{ss_prdlst_cd} as d12,
-            #{ss_cret_dtm} as d13,
-            #{ss_rtrvldsuse_seq} as d14,
-            #{ss_prdlst_report_no} as d15,
-            #{ss_rtrvl_grdcd_nm} as d16,
-            #{ss_prdlst_cd_nm} as d17,
-            #{ss_lcns_no} as d18
+            #{ss_prdlst_cd} as d11,
+            #{ss_cret_dtm} as d12,
+            #{ss_rtrvldsuse_seq} as d13,
+            #{ss_prdlst_report_no} as d14,
+            #{ss_rtrvl_grdcd_nm} as d15,
+            #{ss_prdlst_cd_nm} as d16,
+            #{ss_lcns_no} as d17
         ) as data
         where not exists(
             select * from sell_stop

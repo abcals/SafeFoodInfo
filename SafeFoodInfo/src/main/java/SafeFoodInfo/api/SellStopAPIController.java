@@ -33,7 +33,7 @@ public class SellStopAPIController {
         urlBuilder.append("/" + URLEncoder.encode("I0490","UTF-8"));
         urlBuilder.append("/" + URLEncoder.encode("xml","UTF-8"));
         urlBuilder.append("/" + URLEncoder.encode("1","UTF-8"));
-        urlBuilder.append("/" + URLEncoder.encode("100","UTF-8"));
+        urlBuilder.append("/" + URLEncoder.encode("200","UTF-8"));
 
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -67,7 +67,6 @@ public class SellStopAPIController {
             vo.setSs_rtrvlplandoc_rtrvlmthd(getTagValue("RTRVLPLANDOC_RTRVLMTHD",elem));
             vo.setSs_distbtmlmt(getTagValue("DISTBTMLMT",elem));
             vo.setSs_prdlst_type(getTagValue("PRDLST_TYPE",elem));
-            vo.setSs_img_file_path(getTagValue("IMG_FILE_PATH",elem));
             vo.setSs_prdlst_cd(getTagValue("PRDLST_CD",elem));
             vo.setSs_cret_dtm(cDt);
             vo.setSs_rtrvldsuse_seq(getTagValue("RTRVLDSUSE_SEQ",elem));

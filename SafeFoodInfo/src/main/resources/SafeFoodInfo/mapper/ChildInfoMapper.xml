@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SafeFoodInfo.mapper.ChildInfoMapper">
+    <insert id="insertChildMealServiceCenter">
+        INSERT INTO child_meal_service_center
+        (cm_instt_nm, cm_cnter_nm, cm_report_yr, cm_report_qu, cm_kndrgr_reg_co, cm_kndrgr_nmpr_co,
+        cm_dccntr_reg_co, cm_dccntr_nmpr_co, cm_etc_reg_co, cm_etc_nmpr_co)
+        select * from(
+            select
+            #{cm_instt_nm} as no,
+            #{cm_cnter_nm} as d1,
+            #{cm_report_yr} as d2,
+            #{cm_report_qu} as d3,
+            #{cm_kndrgr_reg_co} as d4,
+            #{cm_kndrgr_nmpr_co} as d5,
+            #{cm_dccntr_reg_co} as d6,
+            #{cm_dccntr_nmpr_co} as d7, 
+            #{cm_etc_reg_co} as d8,
+            #{cm_etc_nmpr_co} as d9
+        ) as data
+        where not exists(
+            select * from child_meal_service_center where
+                cm_instt_nm = #{cm_instt_nm} and
+                cm_cnter_nm = #{cm_cnter_nm} and
+                cm_report_yr = #{cm_report_yr} and
+                cm_report_qu = #{cm_report_qu});
+    </insert>
+    <insert id="insertChildGoodStore">
+        INSERT INTO child_good_store
+        (cg_gnt_no, cg_upso_nm, cg_upjong, cg_addr, cg_aplc_dt, cg_hold_instt_cd)
+        select * from(
+            select
+            #{cg_gnt_no} as no,
+            #{cg_upso_nm} as d1,
+            #{cg_upjong} as d2,
+            #{cg_addr} as d3,
+            #{cg_aplc_dt} as d4,
+            #{cg_hold_instt_cd} as d5
+        ) as data
+        where not exists(
+            select * from child_good_store where
+                cg_gnt_no = #{cg_gnt_no} and
+                cg_upso_nm = #{cg_upso_nm} and
+                cg_upjong = #{cg_upjong} and
+                cg_hold_instt_cd = #{cg_hold_instt_cd});
+    </insert>
+    <insert id = "insertChildFoodSafeArea">
+        INSERT INTO child_food_safe_area
+        (cf_upso_nm, cf_bssh_no, cf_upjong, cf_hold_instt_nm, cf_food_safe_prtc_zone_nm, cf_addr, cf_schl_nm)
+        select * from(
+            select
+            #{cf_upso_nm} as no,
+            #{cf_bssh_no} as d1,
+            #{cf_upjong} as d2,
+            #{cf_hold_instt_nm} as d3,
+            #{cf_food_safe_prtc_zone_nm} as d4,
+            #{cf_addr} as d5,
+            #{cf_schl_nm} as d6
+        ) as data
+        where not exists(
+            select * from child_food_safe_area where
+                cf_upso_nm = #{cf_upso_nm} and
+                cf_bssh_no = #{cf_bssh_no} and
+                cf_hold_instt_nm = #{cf_hold_instt_nm} and
+                cf_schl_nm = #{cf_schl_nm});
+    </insert>
+    <insert id = "insertChildFavoriteFoodQuality">
+        INSERT INTO child_favorite_food_quality
+        (cq_child_ffq_crtfc_no, cq_bssh_nm, cq_lcns_no, cq_prdlst_cd_nm, cq_prdlst_nm, cq_cn_wt,
+        cq_appn_bgn_dt, cq_appn_end_dt, cq_child_favor_food_type_nm)
+        select * from(
+            select
+            #{cq_child_ffq_crtfc_no} as no,
+            #{cq_bssh_nm} as d1,
+            #{cq_lcns_no} as d2,
+            #{cq_prdlst_cd_nm} as d3,
+            #{cq_prdlst_nm} as d4,
+            #{cq_cn_wt} as d5,
+            #{cq_appn_bgn_dt} as d6,
+            #{cq_appn_end_dt} as d7,
+            #{cq_child_favor_food_type_nm} as d8
+        ) as data
+        where not exists(
+            select * from child_favorite_food_quality where
+                cq_child_ffq_crtfc_no = #{cq_child_ffq_crtfc_no} and
+                cq_bssh_nm = #{cq_bssh_nm} and
+                cq_prdlst_nm = #{cq_prdlst_nm} and
+                cq_appn_bgn_dt = #{cq_appn_bgn_dt});
+    </insert>
+    <select id = "selectEnterpriseCnt" resultType = "SafeFoodInfo.vo.child_vo.ChildFavoriteFoodQualityVO">
+        select cq_bssh_nm, count(*)as cnt from child_favorite_food_quality group by cq_bssh_nm
+        having cnt >= 10;
+    </select>
+    <select id = "selectRegionalGoodStoreCnt" resultType = "SafeFoodInfo.vo.child_vo.ChildGoodStoreVO">
+        select cg_hold_instt_cd , count(*)as g_cnt from child_good_store cgs
+        where cg_hold_instt_cd like #{regional} group by cg_hold_instt_cd;
+    </select>
+</mapper>

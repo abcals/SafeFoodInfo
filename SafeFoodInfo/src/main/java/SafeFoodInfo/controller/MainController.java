@@ -44,11 +44,6 @@ public class MainController {
 
         return "/foodadditives/foodadditives";
     }
-    @GetMapping("/foodcode")
-    public String getFoodCode(){
-
-        return "/foodcode/foodcode";
-    }
     @GetMapping("/foodpoison")
     public String getFoodPoison(){
 

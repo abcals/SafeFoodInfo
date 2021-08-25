@@ -24,10 +24,10 @@
                 <a href="/foodadditives">식품첨가물</a>
             </li>
             <li>
-                <a href="/foodcode">식품공전</a>
+                <a href="/foodpoison">식중독정보</a>
             </li>
             <li>
-                <a href="/foodpoison">식중독정보</a>
+                <a href="/child_info">어린이</a>
             </li>
         </ul>
     </div>
