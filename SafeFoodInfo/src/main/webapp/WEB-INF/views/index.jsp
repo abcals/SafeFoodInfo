@@ -22,6 +22,7 @@
                     <div class="accident_cnt chart_left">
                         <canvas id="regional_good_store" style="width:100%;"></canvas>
                         <span>어린이 우수 판매업소 현황&nbsp <select id="region_select">
+                            <option value="null" disabled>지역선택</option>
                             <option value="서울">서울특별시</option>
                             <option value="경기">경기도</option>
                             <option value="인천">인천광역시</option>

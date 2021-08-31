@@ -27,11 +27,11 @@ public class HealthFood_IngredientAPIController {
     public Map<String, Object> getHealthFoodIngredientInfo()throws Exception{
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         StringBuilder urlBuilder = new StringBuilder("http://openapi.foodsafetykorea.go.kr/api"); 
-        urlBuilder.append("/" + URLEncoder.encode("sample","UTF-8")); /*6e683879bddd4137880c*/
+        urlBuilder.append("/" + URLEncoder.encode("6e683879bddd4137880c","UTF-8")); /*6e683879bddd4137880c*/
         urlBuilder.append("/" + URLEncoder.encode("I-0050","UTF-8"));
         urlBuilder.append("/" + URLEncoder.encode("xml","UTF-8"));
         urlBuilder.append("/" + URLEncoder.encode("1","UTF-8"));
-        urlBuilder.append("/" + URLEncoder.encode("100","UTF-8"));
+        urlBuilder.append("/" + URLEncoder.encode("5","UTF-8"));
 
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = docFactory.newDocumentBuilder();

@@ -33,4 +33,16 @@ public class ChildInfoService {
     public List<ChildGoodStoreVO> selectRegionalGoodStoreCnt(String regional){
         return mapper.selectRegionalGoodStoreCnt(regional);
     }
+    public List<ChildGoodStoreVO> selectRegionalGoodStoreList(String region){
+        return mapper.selectRegionalGoodStoreList(region);
+    }
+    public List<ChildMealServiceCenterVO> selectMealServiceList(){
+        return mapper.selectMealServiceList();
+    }
+    public List<ChildFavoriteFoodQualityVO> selectFavoriteE_name(){
+        return mapper.selectFavoriteE_name();
+    }
+    public List<ChildFavoriteFoodQualityVO> selectEnterpriseFavoriteFood(String enterprise){
+        return mapper.selectEnterpriseFavoriteFood(enterprise);
+    }
 }

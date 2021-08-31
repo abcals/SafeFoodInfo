@@ -1,4 +1,13 @@
 $(function(){
+    function formatDate(date){
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+        return [year, month, day].join('-');
+    }
     $.ajax({
         type:"get",
         url:"/api/IncongruityProduct/list",
@@ -17,7 +26,7 @@ $(function(){
             }
         }
     })
-    $.ajax({
+    $.ajax({ 
         type:"get",
         url:"/api/AdministrativeMeasure/list",
         success:function(r){
@@ -44,7 +53,7 @@ $(function(){
                         '<td>'+r.list[i].ss_bsshnm+'</td>'+
                         '<td>'+r.list[i].ss_prdlst_type+'</td>'+
                         '<td>'+r.list[i].ss_rtrvlprvns+'</td>'+
-                        '<td>'+r.list[i].ss_cret_dtm+'</td>'+
+                        '<td>'+formatDate(r.list[i].ss_cret_dtm)+'</td>'+
                     "</tr>";
                 $(".stop_list").append(tag);
             }

@@ -96,4 +96,18 @@
         select cg_hold_instt_cd , count(*)as g_cnt from child_good_store cgs
         where cg_hold_instt_cd like #{regional} group by cg_hold_instt_cd;
     </select>
+    <select id = "selectRegionalGoodStoreList" resultType = "SafeFoodInfo.vo.child_vo.ChildGoodStoreVO">
+        select cg_upso_nm, cg_upjong, cg_addr from child_good_store where cg_hold_instt_cd like #{region};
+    </select>
+    <select id = "selectMealServiceList" resultType = "SafeFoodInfo.vo.child_vo.ChildMealServiceCenterVO">
+        select  * from child_meal_service_center;
+    </select>
+    <select id = "selectFavoriteE_name" resultType = "SafeFoodInfo.vo.child_vo.ChildFavoriteFoodQualityVO">
+        select distinct 
+            (select cq_bssh_nm) as e_name from child_favorite_food_quality order by e_name;
+    </select>
+    <select id = "selectEnterpriseFavoriteFood" resultType = "SafeFoodInfo.vo.child_vo.ChildFavoriteFoodQualityVO">
+        select cq_prdlst_nm, cq_prdlst_cd_nm, cq_cn_wt, cq_appn_bgn_dt, cq_appn_end_dt
+        from child_favorite_food_quality where cq_bssh_nm like #{enterprise};
+    </select>
 </mapper>

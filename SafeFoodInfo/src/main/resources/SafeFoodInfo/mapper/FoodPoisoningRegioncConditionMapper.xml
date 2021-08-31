@@ -8,4 +8,25 @@
         VALUES
         (#{fp_year}, #{fp_mm}, #{fp_area}, #{fp_cnt}, #{fp_patnt});
     </insert>
+    <insert id = "insertPoisonIndex">
+        INSERT INTO poison_index
+        (pi_code, pi_areaNo, pi_date, pi_today, pi_tomorrow, pi_theDayAfterTomorrow)
+        select * from(
+            select
+            #{pi_code} as no,
+            #{pi_areaNo} as d1,
+            #{pi_date} as d2,
+            #{pi_today} as d3,
+            #{pi_tomorrow} as d4,
+            #{pi_theDayAfterTomorrow} as d5
+        ) as data
+        where not exists(
+            select * from poison_index where
+                pi_code = #{pi_code}  and
+                pi_areaNo = #{pi_areaNo} and
+                pi_date = #{pi_date} and
+                pi_today = #{pi_today} and
+                pi_tomorrow = #{pi_tomorrow} and
+                pi_theDayAfterTomorrow = #{pi_theDayAfterTomorrow});
+    </insert>
 </mapper>

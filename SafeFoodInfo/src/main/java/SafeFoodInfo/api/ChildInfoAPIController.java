@@ -243,4 +243,36 @@ public class ChildInfoAPIController {
 
         return resultMap;
     }
+
+    @GetMapping("/api/childinfo/goodstore/list")
+    public Map<String, Object> getGoodStoreList(@RequestParam String region){
+        Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
+
+        char[] c = region.toCharArray();
+        region = "%"+c[0]+"%"+c[1]+"%";
+
+        List<ChildGoodStoreVO> list = service.selectRegionalGoodStoreList(region);
+        resultMap.put("list", list);
+
+        return resultMap;
+    }
+    @GetMapping("/api/childinfo/mealservice")
+    public Map<String, Object> getMealServiceList(){
+        Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
+
+        List<ChildMealServiceCenterVO> list = service.selectMealServiceList();
+        resultMap.put("list", list);
+
+        return resultMap;
+    }
+
+    @GetMapping("/api/childinfo/quality/enterprise")
+    public Map<String, Object> getEnterpriseFavoriteFood(@RequestParam String enterprise){
+        Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
+
+        List<ChildFavoriteFoodQualityVO> list = service.selectEnterpriseFavoriteFood(enterprise);
+        resultMap.put("list", list);
+
+        return resultMap;
+    }
 }

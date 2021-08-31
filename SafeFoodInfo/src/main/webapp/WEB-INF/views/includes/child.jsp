@@ -15,16 +15,16 @@
         <a href="/" id="logo">그림</a>
         <ul class="main_menu">
             <li>
-                <a href="#">급식센터 지원현황</a>
+                <a href="/child_mealservice">급식센터 지원현황</a>
             </li>
             <li>
-                <a href="#">어린이 우수판매업소</a>
+                <a href="/child_goodstore">어린이 우수판매업소</a>
             </li>
             <li>
                 <a href="#">어린이 식품안전보호구역</a>
             </li>
             <li>
-                <a href="#">기호식품 품질인증 현황</a>
+                <a href="/child_favorite">기호식품 품질인증 현황</a>
             </li>
         </ul>
     </div>

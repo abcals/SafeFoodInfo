@@ -18,4 +18,5 @@ public class ChildFavoriteFoodQualityVO {
     private String cq_child_favor_food_type_nm;
 
     private Integer cnt;
+    private String e_name;
 }

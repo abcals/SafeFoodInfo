@@ -17,4 +17,8 @@ public interface ChildInfoMapper {
     public void insertChildFavoriteFoodQuality(ChildFavoriteFoodQualityVO vo);
     public List<ChildFavoriteFoodQualityVO> selectEnterpriseCnt();
     public List<ChildGoodStoreVO> selectRegionalGoodStoreCnt(String regional);
+    public List<ChildGoodStoreVO> selectRegionalGoodStoreList(String region);
+    public List<ChildMealServiceCenterVO> selectMealServiceList();
+    public List<ChildFavoriteFoodQualityVO> selectFavoriteE_name();
+    public List<ChildFavoriteFoodQualityVO> selectEnterpriseFavoriteFood(String enterprise);
 }
