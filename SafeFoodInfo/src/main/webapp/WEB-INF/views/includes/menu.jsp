@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/assets/css/reset.css">
-    <link rel="stylesheet" href="/assets/css/index.css">    
+    <link rel="stylesheet" href="/assets/css/index.css">  
 </head>
 <body>
     <div class="top_menu">
@@ -30,6 +30,11 @@
                 <a href="/board">게시판</a>
             </li>
         </ul>
+    </div>
+    <div class="user_menu">
+        <a href = "/join">회원가입</a>
+        <span>|</span>
+        <a href = "/login">로그인</a> 
     </div>
 </body>
 </html>
