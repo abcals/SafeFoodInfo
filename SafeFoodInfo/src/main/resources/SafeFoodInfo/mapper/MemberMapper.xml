@@ -14,4 +14,13 @@
     <select id="selectMemberByEmail" resultType="java.lang.Integer">
         select count(*) from member_info where mi_email=#{email}
     </select>
+
+    <select id="loginMember" resultType="java.lang.Integer">
+        select count(*) from member_info where mi_id=#{id} and mi_pwd=#{pwd}
+    </select>
+    <select id="selectMemberInfo" resultType="SafeFoodInfo.vo.board_vo.MemberInfoVO">
+        select 
+            mi_seq, mi_id, mi_name, mi_email, mi_gen, mi_phone, mi_birth_year, mi_birth_m, mi_birth_d
+        from member_info where mi_id=#{id}
+    </select>
 </mapper>

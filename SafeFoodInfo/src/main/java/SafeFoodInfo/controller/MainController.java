@@ -52,11 +52,6 @@ public class MainController {
 
         return "/foodadditives/foodadditives";
     }
-    @GetMapping("/board")
-    public String getFoodPoison(){
-
-        return "/board/board_main";
-    }
     @GetMapping("/child_info")
     public String getChildInfo(){
 

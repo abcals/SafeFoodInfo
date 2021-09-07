@@ -97,7 +97,7 @@ $(function(){
             success:function(r) {
                 alert(r.message);
                 if(r.status){
-                    location,href="/";
+                    location.href="/";
                 }
             },
             error:function(e) {
@@ -160,6 +160,27 @@ $(function(){
     });
     $("#user_email").change(function(){
         emailCheck = false;
+    });
+    $('.pw').focusout(function () {
+        var pwd1 = $("#user_pwd").val(); 
+        var pwd2 = $("#user_pwd_confirm").val();
+  
+        if ( (pwd1 != '' && pwd2 == '') || (pwd1 == '' && pwd2 != '') ) {
+            null;
+        } else if (pwd1 != "" || pwd2 != "") {
+            if (pwd1 == pwd2) {
+                $("#alert_success").css('display', 'inline-block');
+                $("#alert_danger").css('display', 'none');
+            } else {
+                alert("비밀번호가 일치하지 않습니다. 비밀번호를 재확인해주세요.");
+                $("#alert_success").css('display', 'none');
+                $("#alert_danger").css('display', 'inline-block');
+            }
+        }
+        if(pwd1 == '' && pwd2 == ''){
+            $("#alert_success").css('display', 'none');
+            $("#alert_danger").css('display', 'none');
+        }
     });
 });
 

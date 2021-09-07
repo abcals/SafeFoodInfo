@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/assets/css/reset.css">
-    <link rel="stylesheet" href="/assets/css/index.css">  
+    <link rel="stylesheet" href="/assets/css/index.css"> 
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="/assets/js/menu.js"></script>
 </head>
 <body>
     <div class="top_menu">
@@ -32,9 +34,19 @@
         </ul>
     </div>
     <div class="user_menu">
-        <a href = "/join">회원가입</a>
-        <span>|</span>
-        <a href = "/login">로그인</a> 
+        <c:if test="${empty member}">
+            <a href="/join">회원가입</a>
+            <span>|</span>
+            <a href="/login">로그인</a>
+        </c:if>
+        <c:if test="${not empty member}">
+            <a href="#">
+                ${member.mi_name}님
+            </a>
+            <span>|</span>
+            <!-- <a href="/member/logout">로그아웃</a> -->
+            <a href="#" id="logout">로그아웃</a>
+        </c:if>
     </div>
 </body>
 </html>

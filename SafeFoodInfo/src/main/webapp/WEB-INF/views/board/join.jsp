@@ -31,13 +31,15 @@
                     <tr>
                         <td>비밀번호</td>
                         <td colspan="3">
-                            <input type="password" id="user_pwd">
+                            <input type="password" id="user_pwd" class="pw" placeholder="비밀번호를 입력해주세요.">
                         </td>
                     </tr>
                     <tr>
                         <td>비밀번호 확인</td>
                         <td colspan="3">
-                            <input type="password" id="user_pwd_confirm">
+                            <input type="password" id="user_pwd_confirm" class="pw" placeholder="비밀번호 확인">
+                            <span id="alert_success" style="display: none;">비밀번호가 일치합니다.</span>
+                            <span id="alert_danger" style="display:none; color: #d92742; font-weight: bold;">비밀번호가 일치하지 않습니다.</span>
                         </td>
                     </tr>
                     <tr>
@@ -58,16 +60,13 @@
                     <tr>
                         <td>생년월일</td>
                         <td>
-                            <input type="text" id="user_birth_year">
-                            <span>년</span>
+                            <input type="text" id="user_birth_year" placeholder="년도">
                         </td>
                         <td>
-                            <input type="text" id="user_birth_month">
-                            <span>월</span>
+                            <input type="text" id="user_birth_month" placeholder="월">
                         </td>
                         <td>
-                            <input type="text" id="user_birth_date">
-                            <span>일</span>
+                            <input type="text" id="user_birth_date" placeholder="일">
                         </td>
                     </tr>
                     <tr>
